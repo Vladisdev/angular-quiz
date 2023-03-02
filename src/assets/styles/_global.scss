@@ -33,11 +33,11 @@ a {
     display: inline-block;
   }
 
-  .&:hover {
+  &:hover {
     background: #32098a;
   }
 
-  .&:disabled {
+  &:disabled {
     background-color: #e2dfe7;
     cursor: not-allowed;
   }
