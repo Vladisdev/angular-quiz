@@ -6,18 +6,15 @@ import { ChoiceComponent } from './choice/choice.component';
 import { TestComponent } from './test/test.component';
 import { ResultComponent } from './result/result.component';
 import { AnswersComponent } from './answers/answers.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     ChoiceComponent,
     TestComponent,
     ResultComponent,
-    AnswersComponent
+    AnswersComponent,
   ],
-  imports: [
-    CommonModule,
-    TestRoutingModule
-  ]
+  imports: [CommonModule, TestRoutingModule, FormsModule],
 })
-export class TestModule { }
+export class TestModule {}

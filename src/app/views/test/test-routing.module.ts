@@ -10,7 +10,7 @@ const routes: Routes = [
     component: ChoiceComponent,
   },
   {
-    path: 'test',
+    path: 'test/:id',
     component: TestComponent,
   },
   {

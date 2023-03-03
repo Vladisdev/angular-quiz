@@ -6,7 +6,7 @@
         Чтобы начать тест, выберите одну из предложенных ниже тем.
       </div>
       <div class="choice__content--options" id="choice-options">
-        <div class="choice__option" *ngFor="let quiz of quizzes">
+        <div class="choice__option" (click)="chooseQuiz(quiz.id)" *ngFor="let quiz of quizzes">
           <div class="choice__option--result" *ngIf="quiz.result">
             <div>Результат</div>
             <div>{{quiz.result}}</div>
