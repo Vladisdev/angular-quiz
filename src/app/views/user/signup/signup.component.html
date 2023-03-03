@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="form__content--button">
-        <button class="button" id="process" [disabled]="signupForm.invalid">
+        <button class="button" id="process" (click)="signup()" [disabled]="signupForm.invalid">
           Перейти к выбору теста
         </button>
       </div>

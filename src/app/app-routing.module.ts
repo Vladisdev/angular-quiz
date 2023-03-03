@@ -19,6 +19,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'choice', redirectTo: '' },
 ];
 
 @NgModule({
