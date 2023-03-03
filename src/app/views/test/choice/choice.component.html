@@ -6,12 +6,12 @@
         Чтобы начать тест, выберите одну из предложенных ниже тем.
       </div>
       <div class="choice__content--options" id="choice-options">
-        <div class="choice__option" data-id="2">
-          <div class="choice__option--result">
+        <div class="choice__option" *ngFor="let quiz of quizzes">
+          <div class="choice__option--result" *ngIf="quiz.result">
             <div>Результат</div>
-            <div>3/5</div>
+            <div>{{quiz.result}}</div>
           </div>
-          <div class="choice__option--text">Тест №2. "JavaScript: Продвинутый уровень"</div>
+          <div class="choice__option--text">{{quiz.name}}</div>
           <div class="choice__option--arrow"><img src="assets/images/arrow.png" alt="Стрелка"></div>
         </div>
       </div>
