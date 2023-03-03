@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TestService } from '../../../shared/services/test.service';
 import { DefaultResponseType } from '../../../../types/default-response.type';
 import { QuizType } from '../../../../types/quiz.type';
 import { ActionTestType } from '../../../../types/action-test.type';
 import { UserResultType } from '../../../../types/user-result.type';
+import { AuthService } from '../../../core/auth/auth.service';
 
 @Component({
   selector: 'app-test',
@@ -22,7 +23,9 @@ export class TestComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private testService: TestService
+    private testService: TestService,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   get activeQuestion() {
@@ -40,7 +43,23 @@ export class TestComponent implements OnInit {
   }
 
   complete(): void {
-    console.log(this.userResult);
+    const userInfo = this.authService.getUserInfo();
+
+    if (userInfo) {
+      this.testService
+        .passQuiz(this.quiz.id, userInfo.userId, this.userResult)
+        .subscribe((response) => {
+          if (response) {
+            if ((response as DefaultResponseType).error !== undefined) {
+              throw new Error((response as DefaultResponseType).message);
+            }
+
+            this.router.navigate(['/result'], {
+              queryParams: { id: this.quiz.id },
+            });
+          }
+        });
+    }
   }
 
   move(action: ActionTestType): void {
